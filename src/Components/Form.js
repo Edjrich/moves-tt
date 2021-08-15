@@ -2,9 +2,9 @@ function Form({setSelectedCity}) {
 
     const getCity = (event) => {
         event.preventDefault();
-        console.log(event)
-        console.log(event.target[0].value)
-        console.log(event.target[1].value)
+        // console.log(event)
+        // console.log(event.target[0].value)
+        // console.log(event.target[1].value)
         setSelectedCity(event.target[0].value)
         // setSelectedZip(event.target[1].value)
     }

@@ -9,7 +9,7 @@ function App() {
   const [selectedCity, setSelectedCity] = useState ();
   // const [selectedZip, setSelectedZip] = useState ();
 
-  console.log(selectedCity)
+  // console.log(selectedCity)
   // console.log(selectedZip)
 
   return (

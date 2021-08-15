@@ -8,10 +8,10 @@ function WeatherDetails ({selectedCity}) {
     const [weatherData, setWeatherData] = useState ({});
     const [loading, setLoading] = useState (true);
     const [coordinates, setCoordinates] = useState ({})
-    const [timeCode, setTimeCode] = useState('');
+    // const [timeCode, setTimeCode] = useState('');
     const [isWorking, setIsWorking] = useState(true);
 
-    console.log(selectedCity)
+    // console.log(selectedCity)
 
     useEffect (() => {
         // const getWeather = (() => {
@@ -24,45 +24,50 @@ function WeatherDetails ({selectedCity}) {
                     appid: '1e4d1fb4deb2aa41fee0c8300f106f70',
                     units: 'metric'
                 }
+            // }).then((res) => {
+            //     if (res.ok) {
+            //         return res;
+            //     } else {
+            //         setIsWorking(false);
+            //     }
             }).then((rawData) => {
-                if (rawData.ok) {
-                    return rawData;
-                } else {
-                    setIsWorking(false);
-                }
-            }).then((rawData) => {
-                console.log(rawData.data)
+                // console.log(rawData)
+                // console.log(rawData.data)
                 setWeatherData(rawData.data);
-                // setLoading(false);
+                setLoading(false);
                 setCoordinates(rawData.data.coord)
                 // setTimeCode(rawData.data.dt)
-                console.log(rawData.data.dt)
-                convertDate(rawData.data.dt);
+                // console.log(rawData.data.dt)
+                // convertDate(rawData.data.dt);
+                setIsWorking(true);
+            }).catch((err) => {
+                if (err.message === 'Nothing to geocode')
+                setIsWorking(false);
             })
     }, [selectedCity]);
 
-    const convertDate = (event) => {
+    // const convertDate = (event) => {
 
-        // console.log(Date)
-        console.log(event)
+    //     // console.log(Date)
+    //     // console.log(event)
         
-        // let numberDate = timeCode;
-      // unix code, to be accepted as variable from api object
-        let newDate = new Date(event);
+    //     // let numberDate = timeCode;
+    //   // unix code, to be accepted as variable from api object
+    //     let newDate = new Date(event);
 
         
-        let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        let dayInfo = newDate.toLocaleDateString(undefined, options);
+    //     let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    //     let dayInfo = newDate.toLocaleDateString(undefined, options);
 
-        // setTimeCode(dayInfo);
+    //     // setTimeCode(dayInfo);
 
 
-        console.log(newDate)
-        // // console.log(NoTimeDate)
-        // console.log(dayInfo)  
-        setTimeCode(dayInfo)
-        setLoading(false);
-    }
+    //     // console.log(newDate)
+    //     // // console.log(NoTimeDate)
+    //     // console.log(dayInfo)  
+    //     setTimeCode(dayInfo)
+    //     setLoading(false);
+    // }
 
     return (
         isWorking ? 
@@ -82,7 +87,7 @@ function WeatherDetails ({selectedCity}) {
                     })
                 }
             </ul> */}
-            <p>Date: {timeCode}</p>
+            {/* <p>Date: {timeCode}</p> */}
             <p>Here's what the weather is like in {weatherData.name}!</p>
             <p>Weather: {weatherData.weather[0].main}</p>
             <p>Description of weather: {weatherData.weather[0].description}</p>
