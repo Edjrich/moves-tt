@@ -7,18 +7,18 @@ import { useState } from 'react';
 function App() {
 
   const [selectedCity, setSelectedCity] = useState ();
-  const [selectedZip, setSelectedZip] = useState ();
+  // const [selectedZip, setSelectedZip] = useState ();
 
   console.log(selectedCity)
-  console.log(selectedZip)
+  // console.log(selectedZip)
 
   return (
     selectedCity ?
     <div className="App">
       <header className="App-header">
         <h1>How about that weather?</h1>
-        <Form setSelectedCity={setSelectedCity, setSelectedZip} />
-        <WeatherDetails selectedCity={selectedCity, selectedZip}/>
+        <Form setSelectedCity={setSelectedCity} />
+        <WeatherDetails selectedCity={selectedCity}/>
       </header>
     </div>
     : 
