@@ -47,8 +47,8 @@ const SevenDayForecast = (props) => {
                             <p>{details.weather[0].description}</p>
                             <p>Max temp: {Math.round(details.temp.max)}</p>
                             <p>Min temp: {Math.round(details.temp.min)}</p>
-                            <p>Wind speed: {details.wind_speed}</p>
-                            <p>Humidity: {details.humidity}</p>
+                            <p>Wind speed: {Math.round(details.wind_speed)}</p>
+                            <p>Humidity: {Math.round(details.humidity)}</p>
                         </>
                     )
                 })

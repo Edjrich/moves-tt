@@ -14,8 +14,8 @@ function Form({setSelectedCity}) {
             <form onSubmit={getCity}>
                     <label htmlFor='city'></label>
                     <input type='text' name='city' id='city' placeholder='Search by City' />
-                    <label htmlFor='zip'> </label>
-                    <input type='text' name='zip' id='zip' placeholder='Search by zip/postal code' /> 
+                    {/* <label htmlFor='zip'> </label>
+                    <input type='text' name='zip' id='zip' placeholder='Search by zip/postal code' />  */}
                     <button type='submit'>Get that weather</button>
             </form>
         </>

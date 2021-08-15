@@ -6,7 +6,7 @@ import Error from './Error';
 function WeatherDetails ({selectedCity}) {
 
     const [weatherData, setWeatherData] = useState ({});
-    const [loading, setLoading] = useState (true);
+    // const [loading, setLoading] = useState (true);
     const [coordinates, setCoordinates] = useState ({})
     // const [timeCode, setTimeCode] = useState('');
     const [isWorking, setIsWorking] = useState(true);
@@ -34,14 +34,15 @@ function WeatherDetails ({selectedCity}) {
                 // console.log(rawData)
                 // console.log(rawData.data)
                 setWeatherData(rawData.data);
-                setLoading(false);
+                // setLoading(false);
                 setCoordinates(rawData.data.coord)
                 // setTimeCode(rawData.data.dt)
                 // console.log(rawData.data.dt)
                 // convertDate(rawData.data.dt);
                 setIsWorking(true);
-            }).catch((err) => {
-                if (err.message === 'Nothing to geocode')
+            })
+            .catch((err) => {
+                if (err.message === 'Nothing to geocode' || 'city not found')
                 setIsWorking(false);
             })
     }, [selectedCity]);
@@ -73,7 +74,7 @@ function WeatherDetails ({selectedCity}) {
         isWorking ? 
         <Error />
         :
-        loading ? <p>loading...</p> :
+        // loading ? <p>loading...</p> :
         <div>
             <h2>Today's weather</h2>
             {/* <ul>
@@ -94,8 +95,8 @@ function WeatherDetails ({selectedCity}) {
             <p>Temperature: {Math.round(weatherData.main.temp)}</p>
             <p>Max temperature: {Math.round(weatherData.main.temp_max)}</p>
             <p>Min temperature: {Math.round(weatherData.main.temp_min)}</p>
-            <p>Wind speed: {weatherData.wind.speed}</p>
-            <p>Humidity: {weatherData.main.humidity}</p>
+            <p>Wind speed: {Math.round(weatherData.wind.speed)}</p>
+            <p>Humidity: {Math.round(weatherData.main.humidity)}</p>
             {
                 coordinates ? <SevenDayForecast coordinates={coordinates}/>
                 : null
